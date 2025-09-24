@@ -4,11 +4,6 @@ pipeline {
         maven 'Maven_3_8_4'  
     }
    stages{
-    stage('CompileandRunSonarAnalysis') {
-            steps {	
-		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=asgbuggywebapp104_asgbuggywebapp104 -Dsonar.organization=asgbuggywebapp104-Dsonar.host.url=https://sonarcloud.io -Dsonar.token=f2feb7942270fca897cee8721a502187c6c56bd7'
-			}
-    }
 	stage('RunSCAAnalysisUsingSnyk') {
             steps {		
 				withCredentials([string(credentialsId: 'Snyk_token', variable: 'SNYK_TOKEN')]) {
